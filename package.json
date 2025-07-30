@@ -1,0 +1,17 @@
+{
+  "name": "monaco",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild index.js --bundle --minify --outfile=monaco.js --format=esm --loader:.ttf=dataurl"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "monaco-editor": "0.52.2"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.8"
+  }
+}

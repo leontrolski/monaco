@@ -1,0 +1,21 @@
+<style>#container{height:20rem;width:50rem;}</style>
+<link rel="stylesheet" href="./monaco.css">
+
+<div id="container"></div>
+
+<script type="module">
+import {monaco} from "./monaco.js";
+// Just disable all the service workers
+self.MonacoEnvironment = {getWorker: () => new Worker(URL.createObjectURL(new Blob([`onmessage = () => {}`])))}
+// Start an editor
+const editor = monaco.editor.create(document.getElementById("container"), {
+    value: "def f():\n    return 42",
+    language: "python",
+    theme: 'vs-dark',
+    lineNumbers: 'off',
+    automaticLayout: true,
+    minimap: {enabled: false},
+})
+// Do something on change
+editor.onDidChangeModelContent(() => console.log(editor.getValue()))
+</script>
